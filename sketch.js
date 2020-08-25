@@ -9,7 +9,6 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
-
 const Constraint = Matter.Constraint;
 
 function preload()
@@ -19,13 +18,8 @@ function preload()
 }
 
 function setup() {
+	
 	createCanvas(1600, 700);
-
-
-Boy=createSprite(600,600,10,20)
-
-Boy.addImage(BoyImg);
-Boy.scale=0.1
 
 	engine = Engine.create();
 	world = engine.world;
@@ -57,6 +51,7 @@ Engine.run(engine);
 function draw() {
   rectMode(CENTER);
   background(220);
+  image(BoyImg,200,450,200,300);
   
 //   detectCollision(stoneObj,mango1);
 //   detectCollision(stoneObj,mango2);
@@ -89,12 +84,12 @@ mango10.display();
 
 function keyPressed(){
 	if(keyCode===32){
-		Matter.body.setPosition(stoneObj.body,{x:235,y:420})
+		Matter.Body.setPosition(stoneObj.body,{x:235,y:420})
 		launcherObject.attach(stoneObj.body);
 	}
 }
 function detectCollision(lstone,lmango){
-	mangoBodyPosition=lmango.body.Position
+	mangoBodyPosition=lmango.body.position
 	stoneBodyPosition=lstone.body.position
 
 	var distance=dist(stoneBodyPosition.x,stoneBodyPosition.y,mangoBodyPosition,mangoBodyPosition.y)
@@ -106,7 +101,7 @@ function detectCollision(lstone,lmango){
 
 function mouseDragged(){
     //if (gameState!=="launched"){
-        //Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+        //Matter.Body.setPosition(stoneObject.body, {x: mouseX , y: mouseY});
     //}
 }
 

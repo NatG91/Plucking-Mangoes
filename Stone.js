@@ -14,15 +14,16 @@ class Stone {
         
         this.image=loadImage('images/stone.png');
     
-        this.body=Bodies.circle(this.x,this.y,this.radius,options);
-        World.add(world,this.body);
+        this.stoneObject=Bodies.circle(this.x,this.y,this.radius/2,options);
+        World.add(world,this.stoneObject);
+
     }
     display(){
         push();
     imageMode(CENTER);
     
-    
-    image(this.image,this.x,this.y,this.radius,this.radius);
+    translate(this.stoneObject.position.x,this.stoneObject.position.y);
+    image(this.image,0,0,this.radius*2,this.radius*2);
     
     pop();
     }
