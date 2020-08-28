@@ -41,7 +41,7 @@ mango10=new Mango (1300,300,50);
 groundObject = new Ground (800,680);
 stoneObject =new Stone (550,543,60);
 
-launchObject =new Launcher (stoneObject.body,{x:550,y:543});
+//launchObject =new Launcher (stoneObject.body,{x:550,y:543});
 
 Engine.run(engine);
   
@@ -53,15 +53,15 @@ function draw() {
   background(220);
   image(BoyImg,200,450,200,300);
   
-//   detectCollision(stoneObj,mango1);
-//   detectCollision(stoneObj,mango2);
-//   detectCollision(stoneObj,mango3);
-//   detectCollision(stoneObj,mango4);
-//   detectCollision(stoneObj,mango5);
+  detectCollision(stoneObject,mango1);
+  detectCollision(stoneObject,mango2);
+  detectCollision(stoneObject,mango3);
+  detectCollision(stoneObject,mango4);
+  detectCollision(stoneObject,mango5);
 
 mangoTree.display();
 
-launchObject.display();
+//launchObject.display();
 
 groundObject.display();
 
@@ -84,31 +84,34 @@ mango10.display();
 
 function keyPressed(){
 	if(keyCode===32){
-		Matter.Body.setPosition(stoneObj.body,{x:235,y:420})
-		launcherObject.attach(stoneObj.body);
+		Matter.Body.setPosition(stoneObject.body,{x:235,y:420})
+		launcherObject.attach(stoneObject.body);
 	}
 }
-function detectCollision(lstone,lmango){
-	mangoBodyPosition=lmango.body.position
-	stoneBodyPosition=lstone.body.position
 
-	var distance=dist(stoneBodyPosition.x,stoneBodyPosition.y,mangoBodyPosition,mangoBodyPosition.y)
-	if(distance<=lmango.r+lstone.r)
-	{
-		Matter.Body.setStatic(lmango.body.false);
-	}
-}
+function detectCollision(lstone,lmango){
+	pos1=lstone.body.position
+	pos2=lmango.body.position
+	 // radius1 = lmango.radius; 
+	 // radius2 = lstone.radius 
+	 var distance = dist(pos1.x,pos1.y, pos2.x, pos2.y)
+	  // console.log(distance) 
+	  // console.log(lmango.radius+lstone.radius)
+	   if(distance<=lmango.radius+lstone.radius) 
+	  {
+		   Matter.Body.setStatic(lmango.body,false);
+		 } 
+		}
 
 function mouseDragged(){
-    //if (gameState!=="launched"){
-        //Matter.Body.setPosition(stoneObject.body, {x: mouseX , y: mouseY});
-    //}
+        Matter.Body.setPosition(stoneObject.body, {x: mouseX , y: mouseY});
 }
 
 
-// function mouseReleased(){
-//     slingshot.fly();
-//     gameState = "launched";
-// }
+//function mouseReleased(){
+   // launchObject.fly();
+//}
+
+
 
 
