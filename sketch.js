@@ -25,34 +25,33 @@ function setup() {
 	world = engine.world;
 
 	//Create the Bodies Here.
-mangoTree=new Tree (1200,400);
+mangoTree=new Tree (970,280);
 
-mango1=new Mango (1200,300,50);
-mango2=new Mango (1100,300,50);
-mango3=new Mango (1100,200,50);
-mango4=new Mango (1200,200,50);
-mango5=new Mango (1200,150,50);
-mango6=new Mango (1300,190,50);
-mango7=new Mango (1300,190,50);
-mango8=new Mango (1400,370,50);
-mango9=new Mango (1400,310,50);
-mango10=new Mango (1300,300,50);
+mango1=new Mango (1100,300,50);
+mango2=new Mango (1000,300,50);
+mango3=new Mango (1100,300,50);
+mango4=new Mango (1100,200,50);
+mango5=new Mango (1100,150,50);
+mango6=new Mango (1200,190,50);
+mango7=new Mango (1200,190,50);
+mango8=new Mango (1360,320,50);
+mango9=new Mango (1300,310,50);
+mango10=new Mango (1200,300,50);
 
 groundObject = new Ground (800,680);
-stoneObject =new Stone (550,543,60);
+stoneObject =new Stone (550,543,30);
 
-//launchObject =new Launcher (stoneObject.body,{x:550,y:543});
+launchObject =new Launcher (stoneObject.body,{x:550,y:543});
 
-Engine.run(engine);
-  
 }
 
 
 function draw() {
+Engine.update(engine) 
   rectMode(CENTER);
   background(220);
   image(BoyImg,200,450,200,300);
-  
+
   detectCollision(stoneObject,mango1);
   detectCollision(stoneObject,mango2);
   detectCollision(stoneObject,mango3);
@@ -61,7 +60,7 @@ function draw() {
 
 mangoTree.display();
 
-//launchObject.display();
+launchObject.display();
 
 groundObject.display();
 
@@ -107,10 +106,9 @@ function mouseDragged(){
         Matter.Body.setPosition(stoneObject.body, {x: mouseX , y: mouseY});
 }
 
-
-//function mouseReleased(){
-   // launchObject.fly();
-//}
+function mouseReleased(){
+   launchObject.fly();
+}
 
 
 

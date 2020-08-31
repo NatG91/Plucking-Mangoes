@@ -13,11 +13,11 @@ class Launcher {
         World.add(world, this.launcher);
     }
     attach(body){
-        this.sling.bodyA = body;
+        this.launcher.bodyA = body;
     }
     
     fly(){
-        this.sling.bodyA = null;
+        this.launcher.bodyA = null;
     }
 
     display(){
