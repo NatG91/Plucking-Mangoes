@@ -41,7 +41,7 @@ mango10=new Mango (1200,300,50);
 groundObject = new Ground (800,680);
 stoneObject =new Stone (550,543,30);
 
-launchObject =new Launcher (stoneObject.body,{x:550,y:543});
+launchObject =new Launcher (stoneObject.body,{x:250,y:530});
 
 }
 
