@@ -17,11 +17,14 @@ class Mango {
         World.add(world,this.body);
     }
     display(){
-        push();
+
+var pos=this.body.position
+
+    push();
+    translate(pos.x, pos.y);
     imageMode(CENTER);
     ellipseMode(CENTER);
-    
-    image(this.image,this.x,this.y,this.radius,this.radius);
+    image(this.image,0,0,this.radius,this.radius);
     
     pop();
     }

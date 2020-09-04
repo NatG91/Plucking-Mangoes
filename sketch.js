@@ -84,7 +84,7 @@ mango10.display();
 function keyPressed(){
 	if(keyCode===32){
 		Matter.Body.setPosition(stoneObject.body,{x:235,y:420})
-		launcherObject.attach(stoneObject.body);
+		launchObject.attach(stoneObject.body);
 	}
 }
 
